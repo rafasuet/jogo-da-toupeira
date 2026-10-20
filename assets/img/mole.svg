@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <title>Toupeira</title>
+  <path d="M20 120V62a40 40 0 0 1 80 0v58z" fill="#8a5a3b"/>
+  <path d="M38 120V86a22 22 0 0 1 44 0v34z" fill="#c89a72"/>
+  <circle cx="46" cy="52" r="6" fill="#2b1a10"/>
+  <circle cx="74" cy="52" r="6" fill="#2b1a10"/>
+  <circle cx="48" cy="50" r="2" fill="#fff"/>
+  <circle cx="76" cy="50" r="2" fill="#fff"/>
+  <circle cx="35" cy="66" r="5" fill="#e8948a" opacity=".6"/>
+  <circle cx="85" cy="66" r="5" fill="#e8948a" opacity=".6"/>
+  <ellipse cx="60" cy="68" rx="14" ry="10" fill="#d9a07a"/>
+  <ellipse cx="60" cy="63" rx="7" ry="5" fill="#e86a8a"/>
+  <rect x="55" y="75" width="4.5" height="6" rx="1" fill="#fff"/>
+  <rect x="60.5" y="75" width="4.5" height="6" rx="1" fill="#fff"/>
+  <ellipse cx="32" cy="104" rx="10" ry="7" fill="#e3b394"/>
+  <ellipse cx="88" cy="104" rx="10" ry="7" fill="#e3b394"/>
+</svg>

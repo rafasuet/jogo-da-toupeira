@@ -1,0 +1,285 @@
+/* Componentes reutilizáveis: botões, formulários, tabelas, cards, mensagens. */
+
+/* ---------- Botões ---------- */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border: 2px solid transparent;
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button--primary {
+    background-color: var(--color-primary);
+    box-shadow: 0 3px 0 var(--color-primary-dark);
+    color: #fff;
+}
+
+.button--primary:hover {
+    background-color: var(--color-primary-dark);
+    color: #fff;
+}
+
+.button--danger {
+    background-color: var(--color-danger);
+    color: #fff;
+}
+
+.button--danger:hover {
+    background-color: var(--color-danger-dark);
+    color: #fff;
+}
+
+.button--ghost {
+    border-color: currentColor;
+    background-color: transparent;
+    color: inherit;
+}
+
+.button--ghost:hover {
+    background-color: rgba(127, 127, 127, 0.15);
+    color: inherit;
+}
+
+.button--small {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+}
+
+.button--block {
+    width: 100%;
+}
+
+/* ---------- Card ---------- */
+
+.card {
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
+}
+
+.card__title {
+    margin-bottom: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+    .card {
+        padding: var(--space-6);
+    }
+}
+
+/* ---------- Formulários ---------- */
+
+.form {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.form__group {
+    display: grid;
+    gap: var(--space-4);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.form__group legend {
+    margin-bottom: var(--space-3);
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.form__intro {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+}
+
+.form__row {
+    display: grid;
+    gap: var(--space-4);
+}
+
+@media (min-width: 36rem) {
+    .form__row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.form__footer {
+    margin: 0;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.field {
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+}
+
+.field label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: #fff;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--color-primary);
+}
+
+.field input[readonly] {
+    border-style: dashed;
+    background-color: var(--color-surface-alt);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+.field__hint {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+}
+
+.field input[aria-invalid="true"] {
+    border-color: var(--color-danger);
+}
+
+.field__error {
+    margin: 0;
+    color: var(--color-danger-dark);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+/* Mensagem geral do formulário (sucesso ou erro) */
+.form-message {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    border-left: 4px solid currentColor;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.form-message--success {
+    background-color: var(--color-success-soft);
+    color: var(--color-success);
+}
+
+.form-message--error {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger-dark);
+}
+
+/* ---------- Tabelas ---------- */
+
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.data-table {
+    width: 100%;
+    background-color: var(--color-surface);
+    font-size: 0.9375rem;
+}
+
+.data-table caption {
+    padding: var(--space-3) var(--space-4);
+    caption-side: bottom;
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    text-align: left;
+}
+
+.data-table th,
+.data-table td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.data-table thead th {
+    background-color: var(--color-surface-alt);
+    color: var(--color-text-muted);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.data-table .is-numeric {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.data-table .is-empty {
+    padding: var(--space-5) var(--space-4);
+    color: var(--color-text-muted);
+    text-align: center;
+    white-space: normal;
+}
+
+.score--negative {
+    color: var(--color-danger);
+    font-weight: 700;
+}
+
+/* ---------- Selos ---------- */
+
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+.badge--classic {
+    background-color: var(--color-classic-bg);
+    color: var(--color-classic-text);
+}
+
+.badge--explosive {
+    background-color: var(--color-explosive-bg);
+    color: var(--color-explosive-text);
+}

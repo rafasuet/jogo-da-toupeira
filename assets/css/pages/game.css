@@ -1,0 +1,343 @@
+/* Exclusivo do jogo: configuração, HUD, tabuleiro (.board), buracos, histórico. */
+
+.game-layout {
+    display: grid;
+    gap: var(--space-5);
+    margin-bottom: var(--space-6);
+}
+
+@media (min-width: 64rem) {
+    .game-layout {
+        grid-template-columns: 21rem minmax(0, 1fr);
+        align-items: start;
+    }
+}
+
+/* ---------- Configuração da partida ---------- */
+
+.setup-form__dimensions {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-3);
+}
+
+.setup-form__dimensions .field {
+    flex: 1;
+}
+
+.setup-form__times {
+    padding-bottom: 0.6rem;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.mode-options {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.mode-option {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.mode-option:hover {
+    border-color: var(--color-primary);
+}
+
+.mode-option input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0.2rem 0 0;
+}
+
+.mode-option__name {
+    display: block;
+    font-weight: 700;
+}
+
+.mode-option input:checked + .mode-option__body .mode-option__name {
+    color: var(--color-primary-dark);
+}
+
+.mode-option__desc {
+    display: block;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.rules {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.rules summary {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rules ul {
+    margin: var(--space-3) 0 0;
+    padding-left: 1.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+}
+
+.rules li + li {
+    margin-top: var(--space-2);
+}
+
+/* ---------- Painel da partida ---------- */
+
+.game-panel__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.game-panel__header .card__title {
+    margin: 0;
+}
+
+.hud {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin: 0 0 var(--space-4);
+}
+
+@media (min-width: 40rem) {
+    .hud {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.hud__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-alt);
+    text-align: center;
+}
+
+.hud__item--time {
+    background-color: var(--color-accent-soft);
+}
+
+.hud dt {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.hud dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.hud__item--time dd {
+    color: var(--color-primary-dark);
+}
+
+.level-progress {
+    margin-bottom: var(--space-5);
+}
+
+.level-progress__label {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    font-size: 0.9375rem;
+}
+
+.level-progress__label .is-below {
+    color: var(--color-danger);
+}
+
+.level-progress__bar {
+    display: block;
+    width: 100%;
+    height: 0.875rem;
+    accent-color: var(--color-grass-dark);
+}
+
+/* ---------- Mensagem de status da partida ---------- */
+
+.game-status {
+    margin: 0 0 var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+}
+
+.game-status--info {
+    background-color: var(--color-surface-alt);
+    color: var(--color-text);
+}
+
+.game-status--success {
+    background-color: var(--color-success-soft);
+    color: var(--color-success);
+}
+
+.game-status--danger {
+    background-color: var(--color-danger-soft);
+    color: var(--color-danger-dark);
+}
+
+/* ---------- Tabuleiro ---------- */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(var(--board-cols, 4), 1fr);
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+    border: 6px solid var(--color-grass-dark);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-grass);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 15%, transparent 16%);
+    background-size: 1.5rem 1.5rem;
+    list-style: none;
+    cursor: url("../../img/hammer.svg") 6 6, pointer;
+}
+
+.board li {
+    display: flex;
+}
+
+.hole {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding: 0 0 100%;
+    overflow: hidden;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    cursor: inherit;
+}
+
+/* Fundo escuro do buraco */
+.hole::before {
+    content: "";
+    position: absolute;
+    right: 8%;
+    bottom: 18%;
+    left: 8%;
+    height: 32%;
+    border-radius: 50%;
+    background-image: radial-gradient(ellipse at 50% 35%, #1e120a 55%, var(--color-hole) 70%);
+}
+
+/* Borda de terra à frente: esconde a base da criatura */
+.hole::after {
+    content: "";
+    position: absolute;
+    right: 4%;
+    bottom: 8%;
+    left: 4%;
+    z-index: 2;
+    height: 26%;
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+    background-color: var(--color-dirt);
+    box-shadow: inset 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.hole__creature {
+    position: absolute;
+    bottom: 20%;
+    left: 15%;
+    z-index: 1;
+    width: 70%;
+    transform: translateY(135%);
+    transition: transform 0.12s ease-out;
+}
+
+.hole--up .hole__creature {
+    transform: translateY(0);
+}
+
+.hole:disabled {
+    cursor: default;
+}
+
+/* Destaque rápido ao acertar: verde na toupeira, vermelho na bomba */
+.hole--whacked {
+    animation: hole-whacked 0.3s ease-out;
+}
+
+.hole--exploded {
+    animation: hole-exploded 0.45s ease-out;
+}
+
+@keyframes hole-whacked {
+    from {
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    to {
+        background-color: transparent;
+    }
+}
+
+@keyframes hole-exploded {
+    from {
+        background-color: rgba(192, 57, 43, 0.85);
+    }
+
+    to {
+        background-color: transparent;
+    }
+}
+
+.board__caption {
+    margin: var(--space-3) 0 0;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* ---------- Fim de partida ---------- */
+
+.modal {
+    width: calc(100% - 2rem);
+    max-width: 26rem;
+    padding: var(--space-6);
+    border: 0;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    color: var(--color-text);
+    text-align: center;
+}
+
+.modal__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+}

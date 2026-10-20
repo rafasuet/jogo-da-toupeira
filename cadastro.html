@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Acerte a Toupeira: crie sua conta de jogador.">
+    <title>Cadastro | Acerte a Toupeira</title>
+    <link rel="icon" href="assets/img/mole.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <script type="module" src="assets/js/pages/cadastro.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a class="brand" href="index.html">
+                <img class="brand__logo" src="assets/img/mole.svg" alt="" width="40" height="40">
+                <span>Acerte a Toupeira</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="conteudo" class="container page">
+        <section class="card auth__card auth__card--wide" aria-labelledby="register-title">
+            <h1 id="register-title">Criar conta</h1>
+            <p class="auth__subtitle">Todos os campos são obrigatórios.</p>
+
+            <form id="register-form" class="form" action="index.html" method="post">
+                <fieldset class="form__group">
+                    <legend>Dados pessoais</legend>
+                    <div class="field">
+                        <label for="full-name">Nome completo</label>
+                        <input id="full-name" name="full_name" type="text" autocomplete="name" maxlength="120" required>
+                    </div>
+                    <div class="form__row">
+                        <div class="field">
+                            <label for="birth-date">Data de nascimento</label>
+                            <input id="birth-date" name="birth_date" type="date" autocomplete="bday" required>
+                        </div>
+                        <div class="field">
+                            <label for="cpf">CPF</label>
+                            <input id="cpf" name="cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" aria-describedby="cpf-hint" required>
+                            <p id="cpf-hint" class="field__hint">Não poderá ser alterado depois.</p>
+                        </div>
+                    </div>
+                    <div class="form__row">
+                        <div class="field">
+                            <label for="phone">Telefone</label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(19) 99999-9999" required>
+                        </div>
+                        <div class="field">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form__group">
+                    <legend>Acesso</legend>
+                    <div class="field">
+                        <label for="username">Nome de usuário</label>
+                        <input id="username" name="username" type="text" autocomplete="username" pattern="[A-Za-z0-9_.]{3,30}" maxlength="30" aria-describedby="username-hint" required>
+                        <p id="username-hint" class="field__hint">De 3 a 30 caracteres: letras, números, ponto ou _. Aparecerá no ranking e não poderá ser alterado.</p>
+                    </div>
+                    <div class="form__row">
+                        <div class="field">
+                            <label for="password">Senha</label>
+                            <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" aria-describedby="password-hint" required>
+                            <p id="password-hint" class="field__hint">Mínimo de 8 caracteres.</p>
+                        </div>
+                        <div class="field">
+                            <label for="password-confirm">Confirmar senha</label>
+                            <input id="password-confirm" name="password_confirm" type="password" autocomplete="new-password" minlength="8" required>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form__actions">
+                    <button class="button button--primary" type="submit">Criar conta</button>
+                    <a class="button button--ghost" href="index.html">Cancelar</a>
+                </div>
+                <p class="form__footer">Já tem conta? <a href="index.html">Entrar</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Acerte a Toupeira · Projeto de SI401 – Programação para a Web · 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

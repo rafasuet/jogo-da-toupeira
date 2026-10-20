@@ -1,0 +1,100 @@
+/* Exclusivo de login e cadastro. */
+
+.auth {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+@media (min-width: 56rem) {
+    .auth {
+        grid-template-columns: 1.1fr 1fr;
+        min-height: 60vh;
+    }
+}
+
+.auth__card {
+    justify-self: center;
+    width: 100%;
+    max-width: 28rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.auth__card--wide {
+    max-width: 44rem;
+}
+
+.auth__subtitle {
+    color: var(--color-text-muted);
+}
+
+/* ---------- Apresentação do jogo (login) ---------- */
+
+.auth__intro {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-4);
+    text-align: center;
+}
+
+@media (min-width: 56rem) {
+    .auth__intro {
+        justify-items: start;
+        text-align: left;
+    }
+}
+
+.auth__kicker {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.auth__headline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.2rem + 2.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.auth__features {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.auth__features li {
+    padding-left: 1.75rem;
+    background-image: url("../../img/mole.svg");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+}
+
+/* Ilustração: toupeira saindo do buraco */
+.hero-art {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 14rem;
+    height: 14rem;
+    overflow: hidden;
+    border: 6px solid var(--color-grass-dark);
+    border-radius: 50%;
+    background-color: var(--color-grass);
+    background-image: radial-gradient(ellipse at 50% 100%, var(--color-hole) 0, var(--color-hole) 38%, transparent 39%);
+}
+
+.hero-art img {
+    width: 62%;
+    margin-bottom: -6%;
+}

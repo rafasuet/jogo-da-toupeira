@@ -1,0 +1,17 @@
+/* Exclusivo do perfil. */
+
+.profile {
+    max-width: 44rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form__group--locked {
+    padding: var(--space-4);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.form__group--locked legend {
+    padding: 0 var(--space-2);
+}

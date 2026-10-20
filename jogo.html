@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Acerte a Toupeira: configure e jogue partidas nas modalidades Clássica e Explosiva.">
+    <title>Jogar | Acerte a Toupeira</title>
+    <link rel="icon" href="assets/img/mole.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/game.css">
+    <script type="module" src="assets/js/pages/jogo.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a class="brand" href="jogo.html">
+                <img class="brand__logo" src="assets/img/mole.svg" alt="" width="40" height="40">
+                <span>Acerte a Toupeira</span>
+            </a>
+            <nav class="main-nav" aria-label="Navegação principal">
+                <ul class="main-nav__list">
+                    <li><a class="main-nav__link" href="jogo.html" aria-current="page">Jogar</a></li>
+                    <li><a class="main-nav__link" href="ranking.html">Ranking</a></li>
+                    <li><a class="main-nav__link" href="perfil.html">Meu perfil</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <span class="user-menu__name">joao123</span>
+                <a class="button button--ghost button--small" href="index.html">Sair</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="conteudo" class="container page">
+        <div class="page-header">
+            <h1>Olá, João! Pronto para jogar?</h1>
+            <p class="page-header__lead">Escolha o tamanho do tabuleiro e a modalidade. Acerte pelo menos 70% das toupeiras de cada nível para avançar.</p>
+        </div>
+
+        <div class="game-layout">
+            <section class="card" aria-labelledby="setup-title">
+                <h2 id="setup-title" class="card__title">Nova partida</h2>
+
+                <form id="setup-form" class="form" action="jogo.html" method="get">
+                    <fieldset class="form__group">
+                        <legend>Tamanho do tabuleiro</legend>
+                        <div class="setup-form__dimensions">
+                            <div class="field">
+                                <label for="rows">Linhas</label>
+                                <select id="rows" name="rows">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <span class="setup-form__times" aria-hidden="true">×</span>
+                            <div class="field">
+                                <label for="cols">Colunas</label>
+                                <select id="cols" name="cols">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="field__hint">De 2 × 2 (4 buracos) até 8 × 8 (64 buracos).</p>
+                    </fieldset>
+
+                    <fieldset class="form__group">
+                        <legend>Modalidade</legend>
+                        <div class="mode-options">
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="classic">
+                                <span class="mode-option__body">
+                                    <span class="mode-option__name">Clássica</span>
+                                    <span class="mode-option__desc">Só aparecem toupeiras.</span>
+                                </span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="explosive" checked>
+                                <span class="mode-option__body">
+                                    <span class="mode-option__name">Explosiva</span>
+                                    <span class="mode-option__desc">Toupeiras e bombas. Cada bomba acertada tira 1 ponto.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <button class="button button--primary button--block" type="submit">Iniciar partida</button>
+                </form>
+
+                <details class="rules">
+                    <summary>Como jogar</summary>
+                    <ul>
+                        <li>Clique nas toupeiras antes que elas se escondam.</li>
+                        <li>Cada nível dura 30 segundos.</li>
+                        <li>Para avançar, acerte pelo menos 70% das toupeiras que apareceram no nível.</li>
+                        <li>A cada nível, as toupeiras ficam menos tempo à mostra.</li>
+                        <li>Na modalidade Explosiva, não acerte as bombas: cada uma tira 1 ponto.</li>
+                        <li>Você pode desistir a qualquer momento; a partida fica salva no histórico.</li>
+                    </ul>
+                </details>
+            </section>
+
+            <section id="game-panel" class="card" aria-labelledby="game-title">
+                <div class="game-panel__header">
+                    <h2 id="game-title" class="card__title">Partida</h2>
+                    <button id="quit-button" class="button button--danger button--small" type="button" disabled>Desistir</button>
+                </div>
+
+                <dl class="hud">
+                    <div class="hud__item hud__item--time">
+                        <dt>Tempo restante</dt>
+                        <dd><time data-hud="time" datetime="PT30S">00:30</time></dd>
+                    </div>
+                    <div class="hud__item">
+                        <dt>Modalidade</dt>
+                        <dd data-hud="mode">Explosiva</dd>
+                    </div>
+                    <div class="hud__item">
+                        <dt>Nível</dt>
+                        <dd data-hud="level">—</dd>
+                    </div>
+                    <div class="hud__item">
+                        <dt>Toupeiras acertadas</dt>
+                        <dd data-hud="moles-hit">0</dd>
+                    </div>
+                </dl>
+
+                <div class="level-progress">
+                    <p class="level-progress__label">
+                        <span>Acerto no nível: <strong data-hud="ratio">0%</strong> (<span data-hud="ratio-detail">0 de 0</span>)</span>
+                        <span>Necessário para avançar: <strong data-hud="required">70%</strong></span>
+                    </p>
+                    <progress class="level-progress__bar" data-hud="progress" max="100" value="0">0%</progress>
+                </div>
+
+                <p id="game-status" class="game-status game-status--danger" role="status">Carregando o jogo… Se esta mensagem não sumir, abra o site por um servidor local (veja o arquivo INSTRUCOES.txt).</p>
+
+                <ul id="board" class="board" aria-label="Tabuleiro de 4 por 4 buracos"></ul>
+                <p class="board__caption">Tabuleiro <span data-hud="board-size">4 × 4</span> · Pontuação da partida: <span data-hud="score">0</span></p>
+            </section>
+        </div>
+
+        <section class="card" aria-labelledby="history-title">
+            <h2 id="history-title" class="card__title">Histórico de partidas</h2>
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <caption>Suas partidas, da mais recente para a mais antiga.</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Jogador</th>
+                            <th scope="col">Tabuleiro</th>
+                            <th scope="col">Modalidade</th>
+                            <th scope="col" class="is-numeric">Pontuação</th>
+                            <th scope="col" class="is-numeric">Nível</th>
+                            <th scope="col">Data/hora</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <tr>
+                            <td class="is-empty" colspan="6">Carregando histórico…</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <dialog id="game-over-dialog" class="modal" aria-labelledby="game-over-title">
+            <h2 id="game-over-title" data-result="title">Fim de partida</h2>
+            <p data-result="reason">Você não atingiu o acerto mínimo do nível.</p>
+            <p>Você chegou ao nível <strong data-result="level">1</strong> com <strong data-result="score">0</strong> pontos.</p>
+            <div class="modal__actions">
+                <button class="button button--primary" type="button" data-action="play-again">Jogar novamente</button>
+                <button class="button button--ghost" type="button" data-action="change-setup">Mudar configurações</button>
+            </div>
+        </dialog>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Acerte a Toupeira · Projeto de SI401 – Programação para a Web · 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

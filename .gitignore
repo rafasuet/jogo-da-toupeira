@@ -1,0 +1,23 @@
+# Credenciais locais
+src/config/config.php
+
+# Configurações locais de ferramentas
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+
+# Editor / SO
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Dados pessoais dos integrantes (nomes e RAs)
+docs/INSTRUCOES.txt
+
+# Entregas geradas
+*.zip
+/*.docx
+/*.pdf
+/*.xlsx
+/*.txt

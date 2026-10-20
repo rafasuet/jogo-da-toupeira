@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Acerte a Toupeira: entre na sua conta para jogar.">
+    <title>Entrar | Acerte a Toupeira</title>
+    <link rel="icon" href="assets/img/mole.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <script type="module" src="assets/js/pages/login.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a class="brand" href="index.html">
+                <img class="brand__logo" src="assets/img/mole.svg" alt="" width="40" height="40">
+                <span>Acerte a Toupeira</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="conteudo" class="container page auth">
+        <div class="auth__intro">
+            <div class="hero-art">
+                <img src="assets/img/mole.svg" alt="" width="120" height="120">
+            </div>
+            <p class="auth__kicker">Arcade clássico desde 1975</p>
+            <p class="auth__headline">Seja mais rápido que as toupeiras.</p>
+            <ul class="auth__features">
+                <li>Modalidades Clássica e Explosiva</li>
+                <li>Tabuleiros de 2 × 2 até 8 × 8</li>
+                <li>Níveis cada vez mais rápidos</li>
+                <li>Ranking global de jogadores</li>
+            </ul>
+        </div>
+
+        <section class="card auth__card" aria-labelledby="login-title">
+            <h1 id="login-title">Entrar</h1>
+            <p class="auth__subtitle">Informe seu usuário e senha para jogar.</p>
+
+            <form id="login-form" class="form" action="jogo.html" method="post">
+                <div class="field">
+                    <label for="username">Usuário</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="button button--primary button--block" type="submit">Entrar</button>
+                <p class="form__footer">Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Acerte a Toupeira · Projeto de SI401 – Programação para a Web · 2026</p>
+        </div>
+    </footer>
+</body>
+</html>
